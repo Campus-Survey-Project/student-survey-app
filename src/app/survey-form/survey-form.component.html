@@ -1,0 +1,55 @@
+<div class="container mt-5">
+  <h2>Student Survey Form</h2>
+  <form (ngSubmit)="onSubmit()" #surveyForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        name="name"
+        [(ngModel)]="survey.name"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        name="email"
+        [(ngModel)]="survey.email"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="feedback">Feedback</label>
+      <textarea
+        id="feedback"
+        class="form-control"
+        name="feedback"
+        [(ngModel)]="survey.feedback"
+        required
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="visitDate">Visit Date</label>
+      <input
+        type="date"
+        id="visitDate"
+        class="form-control"
+        name="visitDate"
+        [(ngModel)]="survey.visitDate"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!surveyForm.valid">
+      Submit
+    </button>
+  </form>
+</div>

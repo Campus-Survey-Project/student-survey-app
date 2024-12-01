@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <h2>All Surveys</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Feedback</th>
+        <th>Visit Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let survey of surveys">
+        <td>{{ survey.id }}</td>
+        <td>{{ survey.name }}</td>
+        <td>{{ survey.email }}</td>
+        <td>{{ survey.feedback }}</td>
+        <td>{{ survey.visitDate }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
