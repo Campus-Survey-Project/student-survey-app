@@ -1,21 +1,19 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="#">Student Survey</a>
+    <a class="navbar-brand" routerLink="/">Student Survey</a>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
           <a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/survey-form" routerLinkActive="active">Survey Form</a>
+          <a class="nav-link" routerLink="/survey-form" routerLinkActive="active">Fill Out Survey</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/survey-list" routerLinkActive="active">Survey List</a>
+          <a class="nav-link" routerLink="/survey-list" routerLinkActive="active">View Surveys</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
-<div class="container mt-4">
-  <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>

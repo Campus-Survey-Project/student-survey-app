@@ -1,13 +1,25 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, NavigationStart, NavigationEnd, NavigationError, NavigationCancel, Event, RouterOutlet, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, RouterModule], // Add RouterModule
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'], // Fixed typo: styleUrls
 })
 export class AppComponent {
-  title = 'student-survey-app';
+  constructor(private router: Router) {
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationStart) {
+        console.log('NavigationStart:', event.url); // Triggered when navigation starts
+      } else if (event instanceof NavigationEnd) {
+        console.log('NavigationEnd:', event.url); // Triggered when navigation ends successfully
+      } else if (event instanceof NavigationError) {
+        console.error('NavigationError:', event.error); // Triggered when navigation fails
+      } else if (event instanceof NavigationCancel) {
+        console.warn('NavigationCancel:', event.reason); // Triggered when navigation is canceled
+      }
+    });
+  }
 }

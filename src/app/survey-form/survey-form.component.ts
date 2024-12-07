@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-survey-form',
   standalone: true,
   templateUrl: './survey-form.component.html',
   styleUrls: ['./survey-form.component.css'],
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
 })
 export class SurveyFormComponent {
   survey = {

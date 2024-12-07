@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-survey-list',
   standalone: true,
   templateUrl: './survey-list.component.html',
   styleUrls: ['./survey-list.component.css'],
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
 })
 export class SurveyListComponent implements OnInit {
   surveys: any[] = [];
