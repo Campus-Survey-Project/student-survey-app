@@ -1,42 +1,50 @@
 <div class="container mt-5">
-  <h2>All Surveys</h2>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Address</th>
-        <th>City</th>
-        <th>State</th>
-        <th>ZIP</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>Graduation Month</th>
-        <th>Graduation Year</th>
-        <th>Liked Campus</th>
-        <th>Recommend Level</th>
-        <th>Feedback</th>
-        <th>Visit Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let survey of surveys">
-        <td>{{ survey.id }}</td>
-        <td>{{ survey.name }}</td>
-        <td>{{ survey.address }}</td>
-        <td>{{ survey.city }}</td>
-        <td>{{ survey.state }}</td>
-        <td>{{ survey.zip }}</td>
-        <td>{{ survey.phone }}</td>
-        <td>{{ survey.email }}</td>
-        <td>{{ survey.gradMonth }}</td>
-        <td>{{ survey.gradYear }}</td>
-        <td>{{ survey.likedCampus.join(', ') }}</td>
-        <td>{{ survey.recommendLevel }}</td>
-        <td>{{ survey.feedback }}</td>
-        <td>{{ survey.visitDate }}</td>
-      </tr>
-    </tbody>
-    
-  </table>
+  <h2 class="text-center mb-4">All Surveys</h2>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>State</th>
+          <th>ZIP</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Graduation Month</th>
+          <th>Graduation Year</th>
+          <th>Liked Campus</th>
+          <th>Recommend Level</th>
+          <th>Feedback</th>
+          <th>Visit Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let survey of surveys">
+          <td>{{ survey.id }}</td>
+          <td>{{ survey.name }}</td>
+          <td>{{ survey.address }}</td>
+          <td>{{ survey.city }}</td>
+          <td>{{ survey.state }}</td>
+          <td>{{ survey.zip }}</td>
+          <td>{{ survey.phone }}</td>
+          <td>{{ survey.email }}</td>
+          <td>{{ survey.gradMonth }}</td>
+          <td>{{ survey.gradYear }}</td>
+          <td>
+            <span *ngFor="let item of survey.likedCampus; let isLast = last">
+              {{ item }}<span *ngIf="!isLast">, </span>
+            </span>
+          </td>
+          <td>{{ survey.recommendLevel }}</td>
+          <td>{{ survey.feedback }}</td>
+          <td>{{ survey.visitDate | date: 'yyyy-MM-dd' }}</td>
+        </tr>
+        <tr *ngIf="surveys.length === 0">
+          <td colspan="14" class="text-center">No surveys available</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
