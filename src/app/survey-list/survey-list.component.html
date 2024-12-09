@@ -5,7 +5,16 @@
       <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>ZIP</th>
+        <th>Phone</th>
         <th>Email</th>
+        <th>Graduation Month</th>
+        <th>Graduation Year</th>
+        <th>Liked Campus</th>
+        <th>Recommend Level</th>
         <th>Feedback</th>
         <th>Visit Date</th>
       </tr>
@@ -14,10 +23,20 @@
       <tr *ngFor="let survey of surveys">
         <td>{{ survey.id }}</td>
         <td>{{ survey.name }}</td>
+        <td>{{ survey.address }}</td>
+        <td>{{ survey.city }}</td>
+        <td>{{ survey.state }}</td>
+        <td>{{ survey.zip }}</td>
+        <td>{{ survey.phone }}</td>
         <td>{{ survey.email }}</td>
+        <td>{{ survey.gradMonth }}</td>
+        <td>{{ survey.gradYear }}</td>
+        <td>{{ survey.likedCampus.join(', ') }}</td>
+        <td>{{ survey.recommendLevel }}</td>
         <td>{{ survey.feedback }}</td>
         <td>{{ survey.visitDate }}</td>
       </tr>
     </tbody>
+    
   </table>
 </div>

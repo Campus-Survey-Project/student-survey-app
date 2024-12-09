@@ -1,55 +1,204 @@
-<div class="container mt-5">
-  <h2>Student Survey Form</h2>
-  <form (ngSubmit)="onSubmit()" #surveyForm="ngForm">
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input
-        type="text"
-        id="name"
-        class="form-control"
-        name="name"
-        [(ngModel)]="survey.name"
-        required
-      />
-    </div>
-
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input
-        type="email"
-        id="email"
-        class="form-control"
-        name="email"
-        [(ngModel)]="survey.email"
-        required
-      />
-    </div>
-
-    <div class="form-group">
-      <label for="feedback">Feedback</label>
-      <textarea
-        id="feedback"
-        class="form-control"
-        name="feedback"
-        [(ngModel)]="survey.feedback"
-        required
-      ></textarea>
-    </div>
-
-    <div class="form-group">
-      <label for="visitDate">Visit Date</label>
-      <input
-        type="date"
-        id="visitDate"
-        class="form-control"
-        name="visitDate"
-        [(ngModel)]="survey.visitDate"
-        required
-      />
-    </div>
-
-    <button type="submit" class="btn btn-primary" [disabled]="!surveyForm.valid">
-      Submit
-    </button>
-  </form>
+<div class="container mt-4">
+  <section id="survey" class="custom-form">
+    <h1 class="text-center">Campus Visit Survey</h1>
+    <form (ngSubmit)="onSubmit()" #surveyForm="ngForm">
+      <div class="form-group">
+        <label for="username">Name <span class="text-danger">*</span></label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          name="name"
+          [(ngModel)]="survey.name"
+          placeholder="John Doe"
+          required
+          autofocus
+        />
+      </div>
+      <div class="form-group">
+        <label for="address">Street Address <span class="text-danger">*</span></label>
+        <input
+          type="text"
+          class="form-control"
+          id="address"
+          name="address"
+          [(ngModel)]="survey.address"
+          placeholder="123 Main St"
+          required
+        />
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="city">City <span class="text-danger">*</span></label>
+          <input
+            type="text"
+            class="form-control"
+            id="city"
+            name="city"
+            [(ngModel)]="survey.city"
+            placeholder="Fairfax"
+            required
+          />
+        </div>
+        <div class="form-group col-md-3">
+          <label for="state">State <span class="text-danger">*</span></label>
+          <input
+            type="text"
+            class="form-control"
+            id="state"
+            name="state"
+            [(ngModel)]="survey.state"
+            placeholder="VA"
+            required
+          />
+        </div>
+        <div class="form-group col-md-3">
+          <label for="zip">ZIP Code <span class="text-danger">*</span></label>
+          <input
+            type="text"
+            class="form-control"
+            id="zip"
+            name="zip"
+            [(ngModel)]="survey.zip"
+            placeholder="22030"
+            required
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="phone">Telephone Number <span class="text-danger">*</span></label>
+        <input
+          type="tel"
+          class="form-control"
+          id="phone"
+          name="phone"
+          [(ngModel)]="survey.phone"
+          placeholder="555-123-4567"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address <span class="text-danger">*</span></label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          [(ngModel)]="survey.email"
+          placeholder="example@example.com"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="feedback">Feedback <span class="text-danger">*</span></label>
+        <textarea
+          class="form-control"
+          id="feedback"
+          name="feedback"
+          [(ngModel)]="survey.feedback"
+          placeholder="Your feedback here"
+          
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="visitDate">Visit Date <span class="text-danger">*</span></label>
+        <input
+          type="date"
+          class="form-control"
+          id="visitDate"
+          name="visitDate"
+          [(ngModel)]="survey.visitDate"
+          placeholder="Select a date"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="gradMonth">Graduation Month</label>
+        <input
+          type="text"
+          class="form-control"
+          id="gradMonth"
+          name="gradMonth"
+          [(ngModel)]="survey.gradMonth"
+          required
+        />
+      </div>
+      
+      <div class="form-group">
+        <label for="gradYear">Graduation Year</label>
+        <input
+          type="number" 
+          class="form-control"
+          id="gradYear"
+          name="gradYear"
+          [(ngModel)]="survey.gradYear"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="recommendLevel">Recommend Level</label>
+        <select
+          class="form-control"
+          id="recommendLevel"
+          name="recommendLevel"
+          [(ngModel)]="survey.recommendLevel"
+          required
+        >
+          <option value="">Select an option</option>
+          <option value="Very Likely">Very Likely</option>
+          <option value="Likely">Likely</option>
+          <option value="Unlikely">Unlikely</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>What did you like most about the campus?</label>
+        <div>
+          <input
+            type="checkbox"
+            id="students"
+            name="likedCampus"
+            value="Students"
+            checked
+            [(ngModel)]="survey.likedCampus"
+          />
+          <label for="students">Students</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="campus"
+            name="likedCampus"
+            value="Campus"
+            [(ngModel)]="survey.likedCampus"
+          />
+          <label for="campus">Campus</label>
+        </div>
+        <div class="form-group">
+          <label for="interestedIn">How did you hear about us?</label>
+          <select
+            class="form-control"
+            id="interestedIn"
+            name="interestedIn"
+            [(ngModel)]="survey.interestedIn"
+            required
+          >
+            <option value="" disabled>Select an option</option>
+            <option value="Friends">Friends</option>
+            <option value="Television">Television</option>
+            <option value="Online">Online</option>
+          </select>
+        </div>
+        
+      </div>
+            
+      
+            
+      <!-- Continue mapping all fields to the survey object as shown above -->
+      <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary" [disabled]="!surveyForm.valid">
+          Submit Survey
+        </button>
+      </div>
+    </form>
+  </section>
 </div>

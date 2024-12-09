@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Survey } from '../models/survey.model';
 @Component({
   selector: 'app-survey-list',
   standalone: true,
@@ -10,21 +11,25 @@ import { RouterModule } from '@angular/router';
   imports: [CommonModule, RouterModule],
 })
 export class SurveyListComponent implements OnInit {
-  surveys: any[] = [];
+  surveys: Survey[] = [];
 
   constructor(private http: HttpClient) {}
 
-  ngOnInit(): void {
-    this.http.get('http://localhost:8080/api/surveys').subscribe(
-      (data: any) => {
-        this.surveys = data;
-        console.log('Surveys fetched:', data);
+  ngOnInit() {
+    this.loadSurveys();
+  }
+
+  loadSurveys() {
+    this.http.get<Survey[]>('http://localhost:8080/api/surveys').subscribe({
+      next: (response) => {
+        this.surveys = response;
+        console.log('Surveys loaded successfully:', this.surveys);
       },
-      (error) => {
-        alert('Error fetching surveys. Please try again.');
-        console.error(error);
+      error: (error) => {
+        console.error('Error fetching surveys:', error);
+        alert('Failed to fetch surveys.');
       }
-    );
+    });
   }
 }
 
